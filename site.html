@@ -3,52 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site Simples</title>
+    <title>Meu Portfólio-Laura Ferreira</title>
     <style>
-        /* Estilização básica para o site ficar bonito */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f9;
-        }
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 400px;
-        }
-        h1 { color: #333; }
-        p { color: #666; }
-        .botao {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .botao:hover {
-            background-color: #0056b3;
-        }
+        /* Estilo básico para o site ficar bonito */
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; color: #333; background: #f4f4f4; }
+        header { background: #2c3e50; color: white; padding: 2rem; text-align: center; }
+        section { max-width: 800px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; }
+        h2 { color: #2c3e50; border-bottom: 2px solid #eee; }
+        .projeto { margin-bottom: 20px; padding: 10px; border-left: 5px solid #3498db; }
+        footer { text-align: center; padding: 20px; font-size: 0.9rem; }
+        a { color: #3498db; text-decoration: none; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Olá, Mundo! 👋</h1>
-        <p>Este é o meu primeiro site simples criado com HTML e CSS.</p>
-        <p>Aprendendo a construir coisas incríveis na web.</p>
-        <a href="#" class="botao">Saiba Mais</a>
-    </div>
+    <header>
+        <h1>Laura Ferreira</h1>
+        <p>Desenvolvedor / Análise e Desenvolvimento de Sistema / Estudante</p>
+    </header>
+
+    <section id="sobre">
+        <h2>Sobre Mim</h2>
+        <p>Prazer, sou Laura Ferreira e sou estudante de Análise e Desenvolvimento de Sistemas (1° semestre).
+Minha missão é ajudar a resolver problemas de sistemas
+o conteúdo de suas redes, Sou apaixonado por tecnologia e estou construindo minha jornada no mundo do desenvolvimento. Adoro resolver problemas e criar soluções digitais.</p>
+    </section>
+
+    <section id="projetos">
+        <h2>Meus Projetos</h2>
+        
+        <div class="projeto">
+            <h3>Projeto 01 - Jogo Pulinho</h3>
+            <p>Jogo desenvolvido em sala de aula atráves de HTML.
+                
+            file:///C:/Users/luisf/Downloads/jogo.html
+        </div>
+
+        <div class="projeto">
+            <h3>Projeto 02 - Site Institucional</h3>
+            <p>Um site responsivo focado em experiência do usuário.</p>
+            <a href="#">Ver Demo →</a>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <p>Email: lauragabriela3232@gmail.com</p>
+        <p>LinkedIn: <a href="#">linkedin.com/in/seuusuario</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - Criado por Você</p>
+    </footer>
 
 </body>
 </html>
