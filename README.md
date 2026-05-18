@@ -52,5 +52,5 @@ Aqui estão todos os meus outros projetos menores, exercícios de faculdade e te
 ---
 
 ### 📬 Vamos nos conectar?
-- 💼 [Meu LinkedIn](link-do-seu-linkedin)
-- 📧 [laura.ramos@seuemail.com](mailto:laura.ramos@seuemail.com)
+- 💼 [Meu LinkedIn](https://www.linkedin.com/in/laura-ferreira-022a74224?utm_source=share_via&utm_content=profile&utm_medium=member_android)
+- 📧 [lauragabriela3232@gmail.com](mailto:lauragabriela3232@gmail.com)
