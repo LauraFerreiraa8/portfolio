@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo  - Mini Game</title>
+    <style>
+        body { margin: 0; display: flex; flex-direction: column; align-items: center; background: #222; color: white; font-family: sans-serif; overflow: hidden; }
+        canvas { background: #333; border: 4px solid #555; margin-top: 20px; cursor: pointer; }
+        .info { text-align: center; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="info">
+        <h1>PULINHO</h1>
+        <p>Clique ou aperte <strong>Espaço</strong> para pular os bugs!</p>
+        <h2 id="score">Pontos: 0</h2>
+    </div>
+
+    <canvas id="gameCanvas" width="600" height="200"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('score');
+
+        // Configurações do Personagem (O Jogador)
+        let player = { x: 50, y: 150, w: 30, h: 30, dy: 0, jumpForce: 12, gravity: 0.6, grounded: false };
+        
+        // Obstáculos e Jogo
+        let obstacles = [];
+        let score = 0;
+        let gameActive = true;
+        let frame = 0;
+
+        function drawPlayer() {
+            ctx.fillStyle = "#00ff00"; // Jogador Verde
+            ctx.fillRect(player.x, player.y, player.w, player.h);
+        }
+
+        function drawObstacles() {
+            ctx.fillStyle = "#ff4444"; // Obstáculo Vermelho (Bug)
+            obstacles.forEach(obj => {
+                ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
+                obj.x -= 5; // Velocidade do obstáculo
+            });
+        }
+
+        function update() {
+            if (!gameActive) return;
+
+            // Gravidade e Pulo
+            player.dy += player.gravity;
+            player.y += player.dy;
+
+            if (player.y + player.h > canvas.height) {
+                player.y = canvas.height - player.h;
+                player.dy = 0;
+                player.grounded = true;
+            }
+
+            // Gerar obstáculos a cada 90 frames
+            if (frame % 90 === 0) {
+                obstacles.push({ x: canvas.width, y: 160, w: 20, h: 40 });
+            }
+
+            // Colisão e Pontuação
+            obstacles.forEach((obj, index) => {
+                if (obj.x + obj.w < 0) {
+                    obstacles.splice(index, 1);
+                    score++;
+                    scoreElement.innerText = `Pontos: ${score}`;
+                }
+
+                // Checar colisão
+                if (player.x < obj.x + obj.w && player.x + player.w > obj.x &&
+                    player.y < obj.y + obj.h && player.y + player.h > obj.y) {
+                    gameActive = false;
+                    alert(`Game Over! Pontos: ${score}`);
+                    location.reload(); // Reinicia o jogo
+                }
+            });
+
+            frame++;
+        }
+
+        function loop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPlayer();
+            drawObstacles();
+            update();
+            requestAnimationFrame(loop);
+        }
+
+        // Controles
+        function jump() {
+            if (player.grounded) {
+                player.dy = -player.jumpForce;
+                player.grounded = false;
+            }
+        }
+
+        window.addEventListener('keydown', (e) => { if (e.code === 'Space') jump(); });
+        canvas.addEventListener('click', jump);
+
+        loop();
+    </script>
+</body>
+</html>
